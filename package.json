@@ -5,15 +5,14 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "files": [
-    "lkt-window.css",
     "dist/*",
     "src/**/*.vue"
   ],
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/lkt-modal.es.js",
-      "require": "./dist/lkt-modal.umd.js"
+      "import": "./dist/lkt-modal-confirm.es.js",
+      "require": "./dist/lkt-modal-confirm.umd.js"
     },
     "./dist/style.css": "./dist/style.css"
   },

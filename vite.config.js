@@ -14,8 +14,8 @@ export default {
   build: {
     lib: {
       entry: `${src}/index.ts`,
-      name: 'LktModal',
-      fileName: (format) => `lkt-modal.${format}.js`,
+      name: 'LktModalConfirm',
+      fileName: (format) => `lkt-modal-confirm.${format}.js`,
     },
     outDir,
     minify: true,
