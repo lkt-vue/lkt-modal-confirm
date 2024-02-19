@@ -1,12 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import {App} from 'vue';
+import {App, Plugin} from 'vue';
 
 import {addConfirm, closeConfirm, openConfirm} from './functions/functions';
 import {default as modal} from './lib-components/LktModalConfirm.vue';
 import LktModal from "lkt-modal";
 import LktButton from "lkt-button";
 
-const LktModalConfirm = {
+const LktModalConfirm: Plugin = {
     install: (app: App, options: any) => {
         // Register plugin components
         if (app.component('lkt-modal-confirm') === undefined) app.component('lkt-modal-confirm', modal);
