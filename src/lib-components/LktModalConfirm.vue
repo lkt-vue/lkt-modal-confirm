@@ -6,21 +6,37 @@ export default {name: 'LktModalConfirm', inheritAttrs: false};
 import {useSlots} from "vue";
 import {closeConfirm} from "../functions/functions";
 
-const props = defineProps({
-    palette: {type: String, default: ''},
-    size: {type: String, default: ''},
-    preTitle: {type: String, default: ''},
-    title: {type: String, default: ''},
-    loading: {type: Boolean, default: false},
-    showClose: {type: Boolean, default: true},
-    disabledClose: {type: Boolean, default: false},
-    disabledVeilClick: {type: Boolean, default: false},
-    modalName: {type: String, default: ''},
-    modalKey: {type: [String, Number], default: '_'},
-    zIndex: {type: Number, default: 500},
-    onConfirm: {type: [Function, undefined], default: undefined},
-    cancelText: {type: String, default: 'Cancel'},
-    confirmText: {type: String, default: 'Confirm'},
+// Props
+const props = withDefaults(defineProps<{
+    palette?: string
+    size?: string
+    preTitle?: string
+    title?: string
+    loading?: boolean
+    showClose?: boolean
+    disabledClose?: boolean
+    disabledVeilClick?: boolean
+    modalName?: string
+    modalKey?: string
+    zIndex?: number
+    onConfirm?: Function|undefined
+    cancelText: string
+    confirmText: string
+}>(), {
+    palette: '',
+    size: '',
+    preTitle: '',
+    title: '',
+    loading: false,
+    showClose: true,
+    disabledClose: false,
+    disabledVeilClick: false,
+    modalName: '',
+    modalKey: '_',
+    zIndex: 500,
+    onConfirm: undefined,
+    cancelText: '',
+    confirmText: '',
 });
 
 const slots = useSlots();
@@ -50,7 +66,7 @@ const doCancel = () => closeConfirm(props.modalName, props.modalKey);
                v-bind:disabled-close="disabledClose"
                v-bind:disabled-veil-click="disabledVeilClick">
 
-        <template v-slot:pre-title v-if="!!slots['pre-title']">
+        <template v-slot:pre-title>
             <slot name="pre-title"></slot>
         </template>
 

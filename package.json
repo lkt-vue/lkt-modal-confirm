@@ -1,6 +1,6 @@
 {
   "name": "lkt-modal-confirm",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "",
   "keywords": [
     "lkt",
@@ -11,19 +11,19 @@
     "javascript"
   ],
   "type": "module",
-  "module": "./dist/lkt-modal-confirm.js",
+  "module": "./dist/build.js",
   "exports": {
     ".": {
-      "import": "./dist/lkt-modal-confirm.js"
+      "import": "./dist/build.js"
     },
-    "./styles": "./build/style.css"
+    "./styles": "./dist/style.css"
   },
-  "types": "./dist/lkt-modal-confirm.d.ts",
-  "files": ["dist/*"],
+  "types": "./dist/index.d.ts",
+  "files": ["dist/*", "src/**/*.vue"],
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "vite build && tsc --project tsconfig.json"
+    "build": "rm -rf dist/*; vue-tsc --declaration --emitDeclarationOnly; vite build; tsc --project tsconfig.build.json; cp build/* dist/"
   },
   "author": "Antonio Ibáñez",
   "devDependencies": {
