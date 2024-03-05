@@ -3,7 +3,6 @@ export default {name: 'LktModalConfirm', inheritAttrs: false};
 </script>
 
 <script setup lang="ts">
-import {useSlots} from "vue";
 import {closeConfirm} from "../functions/functions";
 
 // Props
@@ -16,6 +15,7 @@ const props = withDefaults(defineProps<{
     showClose?: boolean
     disabledClose?: boolean
     disabledVeilClick?: boolean
+    hiddenButtons?: boolean
     modalName?: string
     modalKey?: string
     zIndex?: number
@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<{
     showClose: true,
     disabledClose: false,
     disabledVeilClick: false,
+    hiddenButtons: false,
     modalName: '',
     modalKey: '_',
     zIndex: 500,
@@ -38,8 +39,6 @@ const props = withDefaults(defineProps<{
     cancelText: '',
     confirmText: '',
 });
-
-const slots = useSlots();
 
 const doConfirm = ($event: Event) => {
     $event.preventDefault();
@@ -70,14 +69,14 @@ const doCancel = () => closeConfirm(props.modalName, props.modalKey);
             <slot name="pre-title"></slot>
         </template>
 
-        <template v-slot:footer-button-cancel="s">
+        <template v-if="!hiddenButtons" v-slot:footer-button-cancel="s">
             <lkt-button v-on:click="doCancel">{{cancelText}}</lkt-button>
         </template>
 
-        <template v-slot:footer-button-confirm="s">
+        <template v-if="!hiddenButtons" v-slot:footer-button-confirm="s">
             <lkt-button v-on:click="doConfirm">{{confirmText}}</lkt-button>
         </template>
 
-        <slot></slot>
+        <slot v-bind:doConfirm="doConfirm" v-bind:doCancel="doCancel"></slot>
     </lkt-modal>
 </template>

@@ -7,6 +7,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showClose?: boolean | undefined;
     disabledClose?: boolean | undefined;
     disabledVeilClick?: boolean | undefined;
+    hiddenButtons?: boolean | undefined;
     modalName?: string | undefined;
     modalKey?: string | undefined;
     zIndex?: number | undefined;
@@ -22,6 +23,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showClose: boolean;
     disabledClose: boolean;
     disabledVeilClick: boolean;
+    hiddenButtons: boolean;
     modalName: string;
     modalKey: string;
     zIndex: number;
@@ -37,6 +39,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showClose?: boolean | undefined;
     disabledClose?: boolean | undefined;
     disabledVeilClick?: boolean | undefined;
+    hiddenButtons?: boolean | undefined;
     modalName?: string | undefined;
     modalKey?: string | undefined;
     zIndex?: number | undefined;
@@ -52,6 +55,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showClose: boolean;
     disabledClose: boolean;
     disabledVeilClick: boolean;
+    hiddenButtons: boolean;
     modalName: string;
     modalKey: string;
     zIndex: number;
@@ -68,6 +72,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     showClose: boolean;
     disabledClose: boolean;
     disabledVeilClick: boolean;
+    hiddenButtons: boolean;
     modalName: string;
     modalKey: string;
     onConfirm: Function;
@@ -75,7 +80,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     confirmText: string;
 }, {}>, {
     "pre-title"?(_: {}): any;
-    default?(_: {}): any;
+    default?(_: {
+        doConfirm: ($event: Event) => void;
+        doCancel: () => void;
+    }): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

@@ -1,16 +1,16 @@
-import { openModal as C, closeModal as k, addModal as _ } from "lkt-modal";
-import { defineComponent as b, useSlots as y, resolveComponent as d, openBlock as g, createBlock as z, withCtx as a, renderSlot as s, createVNode as f, createTextVNode as m, toDisplayString as r } from "vue";
-const w = (t, o = "_", l = {}) => {
+import { openModal as C, closeModal as k, addModal as y } from "lkt-modal";
+import { defineComponent as b, resolveComponent as d, openBlock as _, createBlock as h, createSlots as B, withCtx as a, renderSlot as s, createVNode as f, createTextVNode as m, toDisplayString as r } from "vue";
+const w = (t, l = "_", o = {}) => {
   let n = t;
-  n.indexOf("confirm__") === 0 && (n = n.substring(9)), C("confirm__" + n, o, l);
-}, c = (t, o = "_") => {
-  let l = t;
-  l.indexOf("confirm__") === 0 && (l = l.substring(9)), k("confirm__" + l, o);
-}, M = (t, o) => {
-  let l = t;
-  l.indexOf("confirm__") === 0 && (l = l.substring(9)), _("confirm__" + l, o);
-}, h = { name: "LktModalConfirm", inheritAttrs: !1 }, T = /* @__PURE__ */ b({
-  ...h,
+  n.indexOf("confirm__") === 0 && (n = n.substring(9)), C("confirm__" + n, l, o);
+}, c = (t, l = "_") => {
+  let o = t;
+  o.indexOf("confirm__") === 0 && (o = o.substring(9)), k("confirm__" + o, l);
+}, M = (t, l) => {
+  let o = t;
+  o.indexOf("confirm__") === 0 && (o = o.substring(9)), y("confirm__" + o, l);
+}, g = { name: "LktModalConfirm", inheritAttrs: !1 }, z = /* @__PURE__ */ b({
+  ...g,
   props: {
     palette: { default: "" },
     size: { default: "" },
@@ -20,6 +20,7 @@ const w = (t, o = "_", l = {}) => {
     showClose: { type: Boolean, default: !0 },
     disabledClose: { type: Boolean, default: !1 },
     disabledVeilClick: { type: Boolean, default: !1 },
+    hiddenButtons: { type: Boolean, default: !1 },
     modalName: { default: "" },
     modalKey: { default: "_" },
     zIndex: { default: 500 },
@@ -28,14 +29,12 @@ const w = (t, o = "_", l = {}) => {
     confirmText: { default: "" }
   },
   setup(t) {
-    const o = t;
-    y();
-    const l = (e) => {
-      e.preventDefault(), e.stopPropagation(), typeof o.onConfirm == "function" && o.onConfirm(), c(o.modalName, o.modalKey);
-    }, n = () => c(o.modalName, o.modalKey);
-    return (e, B) => {
-      const i = d("lkt-button"), p = d("lkt-modal");
-      return g(), z(p, {
+    const l = t, o = (e) => {
+      e.preventDefault(), e.stopPropagation(), typeof l.onConfirm == "function" && l.onConfirm(), c(l.modalName, l.modalKey);
+    }, n = () => c(l.modalName, l.modalKey);
+    return (e, v) => {
+      const i = d("lkt-button"), u = d("lkt-modal");
+      return _(), h(u, {
         "pre-title": e.preTitle,
         title: e.title,
         "modal-name": e.modalName,
@@ -47,36 +46,48 @@ const w = (t, o = "_", l = {}) => {
         "show-close": e.showClose,
         "disabled-close": e.disabledClose,
         "disabled-veil-click": e.disabledVeilClick
-      }, {
+      }, B({
         "pre-title": a(() => [
           s(e.$slots, "pre-title")
         ]),
-        "footer-button-cancel": a((u) => [
-          f(i, { onClick: n }, {
-            default: a(() => [
-              m(r(e.cancelText), 1)
-            ]),
-            _: 1
-          })
-        ]),
-        "footer-button-confirm": a((u) => [
-          f(i, { onClick: l }, {
-            default: a(() => [
-              m(r(e.confirmText), 1)
-            ]),
-            _: 1
-          })
-        ]),
         default: a(() => [
-          s(e.$slots, "default")
+          s(e.$slots, "default", {
+            doConfirm: o,
+            doCancel: n
+          })
         ]),
-        _: 3
-      }, 8, ["pre-title", "title", "modal-name", "modal-key", "z-index", "palette", "size", "loading", "show-close", "disabled-close", "disabled-veil-click"]);
+        _: 2
+      }, [
+        e.hiddenButtons ? void 0 : {
+          name: "footer-button-cancel",
+          fn: a((p) => [
+            f(i, { onClick: n }, {
+              default: a(() => [
+                m(r(e.cancelText), 1)
+              ]),
+              _: 1
+            })
+          ]),
+          key: "0"
+        },
+        e.hiddenButtons ? void 0 : {
+          name: "footer-button-confirm",
+          fn: a((p) => [
+            f(i, { onClick: o }, {
+              default: a(() => [
+                m(r(e.confirmText), 1)
+              ]),
+              _: 1
+            })
+          ]),
+          key: "1"
+        }
+      ]), 1032, ["pre-title", "title", "modal-name", "modal-key", "z-index", "palette", "size", "loading", "show-close", "disabled-close", "disabled-veil-click"]);
     };
   }
 }), K = {
-  install: (t, o) => {
-    t.component("lkt-modal-confirm") === void 0 && t.component("lkt-modal-confirm", T);
+  install: (t, l) => {
+    t.component("lkt-modal-confirm") === void 0 && t.component("lkt-modal-confirm", z);
   }
 };
 export {
