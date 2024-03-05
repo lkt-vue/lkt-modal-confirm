@@ -22,6 +22,10 @@ const props = withDefaults(defineProps<{
     onConfirm?: Function|undefined
     cancelText: string
     confirmText: string
+    cancelPalette: string
+    confirmPalette: string
+    closeConfirm: string
+    closeConfirmKey: string
 }>(), {
     palette: '',
     size: '',
@@ -38,11 +42,17 @@ const props = withDefaults(defineProps<{
     onConfirm: undefined,
     cancelText: '',
     confirmText: '',
+    cancelPalette: '',
+    confirmPalette: '',
+    closeConfirm: '',
+    closeConfirmKey: '_',
 });
 
-const doConfirm = ($event: Event) => {
-    $event.preventDefault();
-    $event.stopPropagation();
+const doConfirm = ($event: Event|undefined = undefined) => {
+    if ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+    }
     if (typeof props.onConfirm === 'function') {
         props.onConfirm();
     }
@@ -63,18 +73,21 @@ const doCancel = () => closeConfirm(props.modalName, props.modalKey);
                v-bind:loading="loading"
                v-bind:show-close="showClose"
                v-bind:disabled-close="disabledClose"
-               v-bind:disabled-veil-click="disabledVeilClick">
-
+               v-bind:disabled-veil-click="disabledVeilClick"
+               v-bind:hidden-footer="hiddenButtons"
+               v-bind:close-confirm="closeConfirm"
+               v-bind:close-confirm-key="closeConfirmKey"
+    >
         <template v-slot:pre-title>
             <slot name="pre-title"></slot>
         </template>
 
         <template v-if="!hiddenButtons" v-slot:footer-button-cancel="s">
-            <lkt-button v-on:click="doCancel">{{cancelText}}</lkt-button>
+            <lkt-button v-on:click="doCancel" :palette="cancelPalette">{{cancelText}}</lkt-button>
         </template>
 
         <template v-if="!hiddenButtons" v-slot:footer-button-confirm="s">
-            <lkt-button v-on:click="doConfirm">{{confirmText}}</lkt-button>
+            <lkt-button v-on:click="doConfirm" :palette="confirmPalette">{{confirmText}}</lkt-button>
         </template>
 
         <slot v-bind:doConfirm="doConfirm" v-bind:doCancel="doCancel"></slot>

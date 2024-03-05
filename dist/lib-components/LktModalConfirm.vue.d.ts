@@ -14,6 +14,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onConfirm?: Function | undefined;
     cancelText: string;
     confirmText: string;
+    cancelPalette: string;
+    confirmPalette: string;
+    closeConfirm: string;
+    closeConfirmKey: string;
 }>, {
     palette: string;
     size: string;
@@ -30,6 +34,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onConfirm: undefined;
     cancelText: string;
     confirmText: string;
+    cancelPalette: string;
+    confirmPalette: string;
+    closeConfirm: string;
+    closeConfirmKey: string;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     palette?: string | undefined;
     size?: string | undefined;
@@ -46,6 +54,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onConfirm?: Function | undefined;
     cancelText: string;
     confirmText: string;
+    cancelPalette: string;
+    confirmPalette: string;
+    closeConfirm: string;
+    closeConfirmKey: string;
 }>, {
     palette: string;
     size: string;
@@ -62,6 +74,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onConfirm: undefined;
     cancelText: string;
     confirmText: string;
+    cancelPalette: string;
+    confirmPalette: string;
+    closeConfirm: string;
+    closeConfirmKey: string;
 }>>>, {
     zIndex: number;
     loading: boolean;
@@ -78,10 +94,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onConfirm: Function;
     cancelText: string;
     confirmText: string;
+    cancelPalette: string;
+    confirmPalette: string;
+    closeConfirm: string;
+    closeConfirmKey: string;
 }, {}>, {
     "pre-title"?(_: {}): any;
     default?(_: {
-        doConfirm: ($event: Event) => void;
+        doConfirm: ($event?: Event | undefined) => void;
         doCancel: () => void;
     }): any;
 }>;
