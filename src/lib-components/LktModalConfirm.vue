@@ -3,7 +3,7 @@ export default {name: 'LktModalConfirm', inheritAttrs: false};
 </script>
 
 <script setup lang="ts">
-import {closeConfirm} from "../functions/functions";
+import {closeConfirm as closeConfirmFn} from "../functions/functions";
 
 // Props
 const props = withDefaults(defineProps<{
@@ -56,10 +56,10 @@ const doConfirm = ($event: Event|undefined = undefined) => {
     if (typeof props.onConfirm === 'function') {
         props.onConfirm();
     }
-    closeConfirm(props.modalName, props.modalKey)
+    closeConfirmFn(props.modalName, props.modalKey)
 }
 
-const doCancel = () => closeConfirm(props.modalName, props.modalKey);
+const doCancel = () => closeConfirmFn(props.modalName, props.modalKey);
 </script>
 
 <template>

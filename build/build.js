@@ -1,16 +1,16 @@
 import { openModal as C, closeModal as k, addModal as y } from "lkt-modal";
-import { defineComponent as b, resolveComponent as f, openBlock as h, createBlock as _, unref as B, createSlots as g, withCtx as a, renderSlot as s, createVNode as m, createTextVNode as r, toDisplayString as c } from "vue";
-const w = (t, l = "_", o = {}) => {
+import { defineComponent as b, resolveComponent as d, openBlock as h, createBlock as B, createSlots as _, withCtx as a, renderSlot as f, createVNode as s, createTextVNode as m, toDisplayString as r } from "vue";
+const N = (t, l = "_", o = {}) => {
   let n = t;
   n.indexOf("confirm__") === 0 && (n = n.substring(9)), C("confirm__" + n, l, o);
-}, i = (t, l = "_") => {
+}, c = (t, l = "_") => {
   let o = t;
   o.indexOf("confirm__") === 0 && (o = o.substring(9)), k("confirm__" + o, l);
-}, M = (t, l) => {
+}, w = (t, l) => {
   let o = t;
   o.indexOf("confirm__") === 0 && (o = o.substring(9)), y("confirm__" + o, l);
-}, z = { name: "LktModalConfirm", inheritAttrs: !1 }, v = /* @__PURE__ */ b({
-  ...z,
+}, g = { name: "LktModalConfirm", inheritAttrs: !1 }, z = /* @__PURE__ */ b({
+  ...g,
   props: {
     palette: { default: "" },
     size: { default: "" },
@@ -34,11 +34,11 @@ const w = (t, l = "_", o = {}) => {
   },
   setup(t) {
     const l = t, o = (e = void 0) => {
-      e && (e.preventDefault(), e.stopPropagation()), typeof l.onConfirm == "function" && l.onConfirm(), i(l.modalName, l.modalKey);
-    }, n = () => i(l.modalName, l.modalKey);
-    return (e, T) => {
-      const d = f("lkt-button"), u = f("lkt-modal");
-      return h(), _(u, {
+      e && (e.preventDefault(), e.stopPropagation()), typeof l.onConfirm == "function" && l.onConfirm(), c(l.modalName, l.modalKey);
+    }, n = () => c(l.modalName, l.modalKey);
+    return (e, v) => {
+      const i = d("lkt-button"), u = d("lkt-modal");
+      return h(), B(u, {
         "pre-title": e.preTitle,
         title: e.title,
         "modal-name": e.modalName,
@@ -51,14 +51,14 @@ const w = (t, l = "_", o = {}) => {
         "disabled-close": e.disabledClose,
         "disabled-veil-click": e.disabledVeilClick,
         "hidden-footer": e.hiddenButtons,
-        "close-confirm": B(i),
+        "close-confirm": e.closeConfirm,
         "close-confirm-key": e.closeConfirmKey
-      }, g({
+      }, _({
         "pre-title": a(() => [
-          s(e.$slots, "pre-title")
+          f(e.$slots, "pre-title")
         ]),
         default: a(() => [
-          s(e.$slots, "default", {
+          f(e.$slots, "default", {
             doConfirm: o,
             doCancel: n
           })
@@ -68,12 +68,12 @@ const w = (t, l = "_", o = {}) => {
         e.hiddenButtons ? void 0 : {
           name: "footer-button-cancel",
           fn: a((p) => [
-            m(d, {
+            s(i, {
               onClick: n,
               palette: e.cancelPalette
             }, {
               default: a(() => [
-                r(c(e.cancelText), 1)
+                m(r(e.cancelText), 1)
               ]),
               _: 1
             }, 8, ["palette"])
@@ -83,12 +83,12 @@ const w = (t, l = "_", o = {}) => {
         e.hiddenButtons ? void 0 : {
           name: "footer-button-confirm",
           fn: a((p) => [
-            m(d, {
+            s(i, {
               onClick: o,
               palette: e.confirmPalette
             }, {
               default: a(() => [
-                r(c(e.confirmText), 1)
+                m(r(e.confirmText), 1)
               ]),
               _: 1
             }, 8, ["palette"])
@@ -98,14 +98,14 @@ const w = (t, l = "_", o = {}) => {
       ]), 1032, ["pre-title", "title", "modal-name", "modal-key", "z-index", "palette", "size", "loading", "show-close", "disabled-close", "disabled-veil-click", "hidden-footer", "close-confirm", "close-confirm-key"]);
     };
   }
-}), P = {
+}), M = {
   install: (t, l) => {
-    t.component("lkt-modal-confirm") === void 0 && t.component("lkt-modal-confirm", v);
+    t.component("lkt-modal-confirm") === void 0 && t.component("lkt-modal-confirm", z);
   }
 };
 export {
-  M as addConfirm,
-  i as closeConfirm,
-  P as default,
-  w as openConfirm
+  w as addConfirm,
+  c as closeConfirm,
+  M as default,
+  N as openConfirm
 };
