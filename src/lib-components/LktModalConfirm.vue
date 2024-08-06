@@ -4,6 +4,7 @@ export default {name: 'LktModalConfirm', inheritAttrs: false};
 
 <script setup lang="ts">
 import {closeConfirm as closeConfirmFn} from "../functions/functions";
+import {useSlots} from "vue";
 
 // Props
 const props = withDefaults(defineProps<{
@@ -48,6 +49,8 @@ const props = withDefaults(defineProps<{
     closeConfirmKey: '_',
 });
 
+const slots = useSlots();
+
 const doConfirm = ($event: Event|undefined = undefined) => {
     if ($event) {
         $event.preventDefault();
@@ -78,7 +81,7 @@ const doCancel = () => closeConfirmFn(props.modalName, props.modalKey);
                v-bind:close-confirm="closeConfirm"
                v-bind:close-confirm-key="closeConfirmKey"
     >
-        <template v-slot:pre-title>
+        <template v-slot:pre-title v-if="slots.preTitle">
             <slot name="pre-title"></slot>
         </template>
 
