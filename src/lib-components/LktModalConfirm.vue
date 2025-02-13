@@ -1,9 +1,5 @@
-<script lang="ts">
-export default {name: 'LktModalConfirm', inheritAttrs: false};
-</script>
-
 <script setup lang="ts">
-import {closeConfirm as closeConfirmFn} from "../functions/functions";
+import {closeConfirm as closeConfirmFn} from "lkt-modal";
 import {useSlots} from "vue";
 
 // Props
@@ -93,6 +89,6 @@ const doCancel = () => closeConfirmFn(props.modalName, props.modalKey);
             <lkt-button v-on:click="doConfirm" :palette="confirmPalette">{{confirmText}}</lkt-button>
         </template>
 
-        <slot v-bind:doConfirm="doConfirm" v-bind:doCancel="doCancel"></slot>
+        <slot v-bind:doConfirm="doConfirm" v-bind:doCancel="doCancel"/>
     </lkt-modal>
 </template>

@@ -1,6 +1,6 @@
 import {App, Plugin} from 'vue';
 
-import {addConfirm, closeConfirm, openConfirm} from './functions/functions';
+import {addConfirm, closeConfirm, openConfirm} from 'lkt-modal';
 import {default as modal} from './lib-components/LktModalConfirm.vue';
 
 const LktModalConfirm: Plugin = {

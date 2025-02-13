@@ -1,6 +1,6 @@
 {
   "name": "lkt-modal-confirm",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "",
   "keywords": [
     "lkt",
@@ -44,7 +44,7 @@
     "lkt-button": "^1.0.13",
     "lkt-events": "^1.0.2",
     "lkt-loader": "^1.0.1",
-    "lkt-modal": "^1.0.0",
+    "lkt-modal": "^1.2.0",
     "lkt-ts-interfaces": "^1.0.2",
     "vue": "^3.3.0"
   }
